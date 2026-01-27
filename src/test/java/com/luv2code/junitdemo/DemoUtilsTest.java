@@ -8,6 +8,8 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 //@DisplayNameGeneration(DisplayNameGenerator.Simple.class)
+//@TestMethodOrder(MethodOrderer.DisplayName.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class DemoUtilsTest {
 
     DemoUtils demoUtils;
@@ -36,6 +38,7 @@ class DemoUtilsTest {
 
     @Test
     @DisplayName("Equals and Not Equals")
+    @Order(1)
     void testEqualsAndNotEquals() {
 
         System.out.println("Running test: testEqualsAndNotEquals");
@@ -46,6 +49,7 @@ class DemoUtilsTest {
 
     @Test
     @DisplayName("Null and Not Null")
+    @Order(0)
     void testNullAndNotEquals() {
 
         System.out.println("Running test: testNullAndNotEquals");
@@ -71,6 +75,7 @@ class DemoUtilsTest {
 
     @Test
     @DisplayName("True and False")
+    @Order(30)
     void testTrueFalse() {
 
         int num1 = 10;
@@ -78,6 +83,12 @@ class DemoUtilsTest {
 
         assertTrue(demoUtils.isGreater(num1,num2), "This should return true");
         assertFalse(demoUtils.isGreater(num2,num1), "This should return false");
+    }
+
+    @Test
+    @DisplayName("Multiply")
+    void testMultiply() {
+        assertEquals(6,demoUtils.multiply(3,2), "answer should be 6");
     }
 
     @Test
@@ -98,6 +109,7 @@ class DemoUtilsTest {
 
     @Test
     @DisplayName("Lines match")
+    @Order(50)
     void testLinesMatch() {
 
         List<String> theList = List.of("luv","2","code");
